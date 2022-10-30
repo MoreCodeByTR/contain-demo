@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "setup": "rm -rf ./node_modules && npm i"
   },
   "dependencies": {
+    "element-plus": "^2.2.19",
     "vue": "^3.2.41"
   },
   "devDependencies": {

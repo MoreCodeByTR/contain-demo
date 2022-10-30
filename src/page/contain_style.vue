@@ -3,15 +3,13 @@
   <h1>contanin size</h1>
   <el-button type="primary" @click="addChild">新增</el-button>
   <div class="page-content">
-    <div class="container">
-      <div class="contain-child" v-for="item in childs" :key="item">
+    <div class="container contain-layout">
+         <div class="contain-child" v-for="item in childs" :key="item">
         {{ item.time }}
       </div>
     </div>
-    <div class="container contain-size">
-      <div class="contain-child" v-for="item in childs" :key="item">
-        {{ item.time }}
-      </div>
+    <div>
+      other div
     </div>
   </div>
 </template>
@@ -50,8 +48,8 @@ function addChild() {
   margin-bottom: 10px;
 }
 
-.contain-size {
-  contain: size;
+.contain-layout {
+  contain: layout;
 }
 
 .page-content {

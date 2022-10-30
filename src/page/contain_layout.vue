@@ -1,25 +1,22 @@
 <template>
   <back-home />
-  <h1>contanin paint</h1>
+  <h1>contanin size</h1>
+  <el-button type="primary" @click="addChild">新增</el-button>
+  <div class="mask-area">遮挡区域</div>
   <div class="page-content">
-    <div class="container">
-      <div class="contain-child"></div>
+    <div class="container contain-layout">
+         <div class="contain-child" v-for="item in childs" :key="item">
+        {{ item.time }}
+      </div>
     </div>
-
-    <div class="container contain-paint">
-      contain-paint
-      <div class="contain-child"></div>
-    </div>
-
-    <div class="container hidden-overflow">
-      overflow: hidden
-      <div class="contain-child"></div>
+    <div>
+      other div
     </div>
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
 import BackHome from "@/components/BackHome.vue";
+import { ref } from "vue";
 
 defineProps({
   msg: String,
@@ -42,30 +39,30 @@ function addChild() {
 }
 
 .contain-child {
-  width: 400px;
-  height: 200px;
-  background-color: greenyellow;
+  border: 1px solid green;
 }
 
 .container {
   width: 300px;
-  height: 300px;
   padding: 20px 0;
   border: 1px solid red;
   margin-bottom: 10px;
 }
 
-.contain-paint {
-  contain: paint;
+.contain-layout {
+  contain: layout;
 }
 
 .page-content {
-  display: flex;
+  /* display: flex;
   width: 100vw;
-  justify-content: space-around;
+  justify-content: space-around; */
 }
 
-.hidden-overflow {
-  overflow: hidden;
+.mask-area {
+  position: absolute;
+  top: 200px;
+  background-color: aqua;
 }
+
 </style>
