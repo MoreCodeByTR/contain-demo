@@ -25,6 +25,11 @@ export const routes = [
     name: "Contian Style",
     component: () => import("@/page/contain_style.vue"),
   },
+  {
+    path: "/dynamic_number",
+    name: "滚动数字",
+    component: () => import("@/page/dynamic_number.vue"),
+  },
 ];
 
 export const router = createRouter({

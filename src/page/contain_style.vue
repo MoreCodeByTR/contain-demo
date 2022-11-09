@@ -1,60 +1,69 @@
 <template>
-  <back-home />
-  <h1>contanin size</h1>
-  <el-button type="primary" @click="addChild">新增</el-button>
-  <div class="page-content">
-    <div class="container contain-layout">
-         <div class="contain-child" v-for="item in childs" :key="item">
-        {{ item.time }}
-      </div>
-    </div>
-    <div>
-      other div
-    </div>
-  </div>
+  <swiper
+    :pagination="{
+      type: 'fraction',
+    }"
+    :navigation="true"
+    :modules="modules"
+    class="mySwiper"
+  >
+    <swiper-slide>Slide 1</swiper-slide><swiper-slide>Slide 2</swiper-slide
+    ><swiper-slide>Slide 3</swiper-slide><swiper-slide>Slide 4</swiper-slide
+    ><swiper-slide>Slide 5</swiper-slide><swiper-slide>Slide 6</swiper-slide
+    ><swiper-slide>Slide 7</swiper-slide><swiper-slide>Slide 8</swiper-slide
+    ><swiper-slide>Slide 9</swiper-slide>
+  </swiper>
 </template>
-<script setup>
-import BackHome from "@/components/BackHome.vue";
-import { ref } from "vue";
+<script>
 
-defineProps({
-  msg: String,
-});
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/swiper-bundle.min.css";  // 所有的Swiper样式
+import { Pagination, Navigation } from "swiper";
 
-const childs = ref([]);
-
-const count = ref(0);
-
-function addChild() {
-  childs.value.push({
-    time: Date.now(),
-  });
-}
+export default {
+  name: "App",
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  setup() {
+    return {
+      modules: [Pagination, Navigation],
+    };
+  },
+};
 </script>
-
-<style scoped>
-.read-the-docs {
-  color: #888;
+<style>
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
-.contain-child {
-  border: 1px solid green;
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
-.container {
-  width: 300px;
-  padding: 20px 0;
-  border: 1px solid red;
-  margin-bottom: 10px;
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.contain-layout {
-  contain: layout;
-}
-
-.page-content {
-  /* display: flex;
-  width: 100vw;
-  justify-content: space-around; */
-}
 </style>

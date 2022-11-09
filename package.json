@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "element-plus": "^2.2.19",
+    "swiper": "^8.4.4",
+    "vconsole": "^3.15.0",
     "vue": "^3.2.41"
   },
   "devDependencies": {
