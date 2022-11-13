@@ -1,18 +1,26 @@
 <template>
   <back-home />
   <h1>contanin size</h1>
-  <el-button type="primary" @click="addChild">新增</el-button>
-  <div class="mask-area">遮挡区域</div>
-  <div class="page-content">
-    <div class="container contain-layout">
-         <div class="contain-child" v-for="item in childs" :key="item">
-        {{ item.time }}
-      </div>
-    </div>
-    <div>
-      other div
-    </div>
-  </div>
+  <el-button type="primary" @click="switchLayout">{{
+    needLayout ? "关" : "开"
+  }}</el-button>
+  <article :class="{ 'contain-layout': needLayout }">
+    <h2>This is blog one.</h2>
+    <p>I am the content of blog 1.</p>
+    <img
+      src="https://avatars.githubusercontent.com/u/51108500?s=40&v=4"
+      alt="Hello I am a wooden box"
+    />
+  </article>
+
+  <article :class="{ 'contain-layout': needLayout }">
+    <h2>This is blog two.</h2>
+    <img
+      src="https://avatars.githubusercontent.com/u/51108500?s=40&v=4"
+      alt="Hello I am also a wooden box"
+    />
+    <p>I am the content of blog 2.</p>
+  </article>
 </template>
 <script setup>
 import BackHome from "@/components/BackHome.vue";
@@ -24,12 +32,10 @@ defineProps({
 
 const childs = ref([]);
 
-const count = ref(0);
+const needLayout = ref(false);
 
-function addChild() {
-  childs.value.push({
-    time: Date.now(),
-  });
+function switchLayout() {
+  needLayout.value = !needLayout.value;
 }
 </script>
 
@@ -53,10 +59,11 @@ function addChild() {
   contain: layout;
 }
 
-.page-content {
-  /* display: flex;
-  width: 100vw;
-  justify-content: space-around; */
+img {
+  float: left;
+}
+article {
+  border: 1px solid black;
 }
 
 .mask-area {
@@ -64,5 +71,4 @@ function addChild() {
   top: 200px;
   background-color: aqua;
 }
-
 </style>
